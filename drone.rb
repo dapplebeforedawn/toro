@@ -8,7 +8,7 @@ require 'socket'
 class Drone
   IP      = '192.168.1.1'
   AT_PORT = 5556 #UDP, command needs to come from 5556 also.
-  SCALE   = 0.33333
+  SCALE   = 0.7
 
   # AT commands at 8bit ASCII
   # One command consists in the three characters AT*
@@ -50,7 +50,11 @@ class Drone
 
   def at_command drone_y
     # "AT*PCMD_MAG=#{incr},1,0,0,#{drone_y},0,0,0\n".unpack("H*")
-    "AT*PCMD=#{incr},1,0,0,#{to_drone_int drone_y},0,\n"#.unpack("H*")
+    "AT*PCMD=#{incr},1,0,0,#{to_drone_int drone_y},0,\n".unpack("H*")
+  end
+
+  def takeoff
+
   end
 
   def to_drone_int(drone_y)
